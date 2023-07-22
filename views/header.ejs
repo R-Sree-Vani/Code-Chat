@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Code-Chat</title>
+  <link rel="icon" href="1-o-modified.png" type="image/icon type" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous" />
+  <style>
+    #loader_bg {
+      position: fixed;
+      z-index: 9999999;
+      background: #fff;
+      width: 100%;
+      height: 100%;
+  }
+  
+  .loader {
+      height: 100%;
+      width: 100%;
+      position: absolute;
+      left: 0;
+      top: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+  }
+  
+  .loader img {
+      width: 100%;
+      height: 100%;
+  }
+  
+  </style>
+</head>
+
+<body>
+  <script>
+    // Wait for 5 seconds
+    setTimeout(function() {
+        var loadingDiv = document.getElementById('loader_bg');
+        loadingDiv.style.display = 'none';
+    }, 3000);
+</script>
+  <!--- navbar session started-->
+  <div id="loader_bg">
+    <div class="loader"><img src="https://freefrontend.com/assets/img/css-loaders/code-loader.gif" alt="img"></div>
+  </div>
+  <nav class="navbar navbar-expand-lg bg-primary">
+    <div class="container-fluid mt-0">
+      <a class="navbar-brand" href="#"><strong>CodeChat</strong></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/"><strong>Home</strong></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="/inbox"><strong>Inbox</strong></a>
+          </li>
+          <% var main_data=user %>
+          <% var Currentuser=JSON.parse(localStorage.getItem(user)) %>
+          <% if(Currentuser==null) { %>
+          <li class="nav-item">
+              <a class="nav-link active" href="/login"><strong>Login</strong></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="/signup"><strong>Signup</strong></a>
+          </li>
+          <% } %>
+          <% if(Currentuser!=null) { %>
+            <li class="nav-item">
+                <strong><a class="nav-link active" href="/userprofile"><%= Currentuser.name %></a></strong>
+            </li>
+            <li class="nav-item">
+              <strong><a class="nav-link active" href="/logout">logout</a></strong>
+            </li>
+          <% } %>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!--- navbar session completed-->
+</body>
+
+</html>
